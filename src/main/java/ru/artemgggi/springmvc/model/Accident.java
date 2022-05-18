@@ -1,6 +1,7 @@
 package ru.artemgggi.springmvc.model;
 
 import java.util.Objects;
+import java.util.Set;
 
 public class Accident {
     private int id;
@@ -8,6 +9,9 @@ public class Accident {
     private String text;
     private String address;
 
+    private AccidentType accidentType;
+
+    private Set<Rule> rules;
 
     public int getId() {
         return id;
