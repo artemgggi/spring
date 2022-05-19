@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.artemgggi.springmvc.model.Accident;
 import ru.artemgggi.springmvc.model.AccidentType;
 import ru.artemgggi.springmvc.model.Rule;
+import ru.artemgggi.springmvc.repository.AccidentJdbcTemplate;
 import ru.artemgggi.springmvc.repository.AccidentMem;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +18,9 @@ import java.util.List;
 @Controller
 public class AccidentControl {
 
-    private final AccidentMem accidents;
+    private final AccidentJdbcTemplate accidents;
 
-    public AccidentControl(AccidentMem accidents) {
+    public AccidentControl(AccidentJdbcTemplate accidents) {
         this.accidents = accidents;
     }
 
@@ -42,13 +42,13 @@ public class AccidentControl {
     @PostMapping("/save")
     public String save(@ModelAttribute Accident accident, HttpServletRequest req) {
         String[] ids = req.getParameterValues("rIds");
-        accidents.create(accident);
+        accidents.save(accident);
         return "redirect:/";
     }
 
-    @GetMapping("/update")
-    public String update(@RequestParam("id") int id, Model model) {
-        model.addAttribute("accident", accidents.findById(id).getId());
-        return "accident/update";
-    }
+//    @GetMapping("/update")
+//    public String update(@RequestParam("id") int id, Model model) {
+//        model.addAttribute("accident", accidents.findById(id).getId());
+//        return "accident/update";
+//    }
 }

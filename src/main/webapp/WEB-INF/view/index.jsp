@@ -8,9 +8,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<c:forEach items="${accidents}" var="accident">
-    <c:out value="${accident.name}"/></br>
-</c:forEach>
+
 <div class="container pt-3">
     <a href="<c:url value='/create'/>">Добавить инцидент</a>
     <table class="table" id='table'>
@@ -20,40 +18,14 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${users}" var="item">
-        <tr>
-            <td>${item}</td>
-        </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-    Accidents
-
-    <table class="table" id='table'>
-        <thead>
-        <tr>
-            <th scope="col">Name</th>
-        </tr>
-        </thead>
-        <tbody>
         <c:forEach items="${accidents}" var="item">
-            <tr>
-                <td>${item.name}</td>
-            </tr>
+        <tr>
+            <td>${item.name}</td>
+        </tr>
         </c:forEach>
         </tbody>
     </table>
 
-    <c:forEach items="${accidents}" var="accident">
-        <div>
-        <span>
-            <c:out value="${accident.name}"/>
-        </span>
-            <span>
-             <a href="<c:url value='/update?id=${accident.id}'/>">Добавить инцидент</a>
-        </span>
-        </div>
-    </c:forEach>
 </div>
 </body>
 </html>
