@@ -3,20 +3,26 @@ package ru.artemgggi.springmvc.control;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.artemgggi.springmvc.repository.AccidentJdbcTemplate;
+import ru.artemgggi.springmvc.model.Accident;
+import ru.artemgggi.springmvc.repository.AccidentRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class IndexControl {
 
-    private final AccidentJdbcTemplate accidents;
+    private final AccidentRepository accidents;
 
-    public IndexControl(AccidentJdbcTemplate accidents) {
+    public IndexControl(AccidentRepository accidents) {
         this.accidents = accidents;
     }
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("accidents", accidents.getAll());
+        List<Accident> res = new ArrayList<>();
+        accidents.findAll().forEach(res::add);
+        model.addAttribute("accidents", res);
         return "index";
     }
 }
