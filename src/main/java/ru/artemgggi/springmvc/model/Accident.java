@@ -2,22 +2,19 @@ package ru.artemgggi.springmvc.model;
 
 import jakarta.persistence.*;
 import java.util.Objects;
-import java.util.Set;
 
-@Entity
 public class Accident {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    public Accident() {}
+
     private int id;
     private String name;
     private String text;
     private String address;
 
-    private AccidentType accidentType;
+    //private AccidentType accidentType;
 
-    private Set<Rule> rules;
+    //private Set<Rule> rules;
 
     public int getId() {
         return id;
