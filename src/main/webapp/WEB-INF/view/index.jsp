@@ -10,6 +10,9 @@
 <body>
 
 <div class="container pt-3">
+    <div>
+        Login as : ${user.username}
+    </div>
     <a href="<c:url value='/create'/>">Добавить инцидент</a>
     <table class="table" id='table'>
         <thead>
